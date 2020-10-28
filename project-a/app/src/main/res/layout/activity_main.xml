@@ -89,54 +89,88 @@
         <RelativeLayout
             android:id="@+id/relative_layout02"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="110dp"
             android:layout_below="@id/relative_layout01"
             android:layout_alignParentRight="true">
-            <RelativeLayout
-                android:id="@+id/relative01"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ffffff">
-                <TextView
-                    android:id="@+id/reservation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="예매율"
-                    android:textSize="22sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5위 1.8%"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@id/reservation"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/relative02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="평점"
-                    android:textSize="22sp"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/relative03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="누적관객수"
-                    android:textSize="22sp"/>
-
-            </RelativeLayout>
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="2dp"
+                    android:gravity="center"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="예매율"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5위 1.8%"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginEnd="2dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="평점"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="4dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:numStars="5"
+                            android:rating="4.5"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="8.2"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="누적관객수"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="839,399명"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -259,7 +293,7 @@
                 android:textStyle="bold"
                 android:textColor="#510266"
                 android:background="@drawable/btn_background"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="300dp"
                 android:layout_below="@id/write"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
@@ -278,7 +312,7 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:src="@drawable/ic_facebook"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="10dp" />
         <ImageView
             android:id="@+id/kakao"
             android:layout_width="55dp"
