@@ -1,45 +1,131 @@
 package com.yunwoon.projectb;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.StringReader;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    ImageView thumb_up, thumb_up_selected, thumb_down, thumb_down_selected;
-    TextView thumb_up_txt, thumb_down_txt, writeReview;
-    Button readReview;
-    int thumbUp = 0, thumbDown = 0;
+    ImageView thumbUpImageView, thumbDownImageView;
+    TextView thumbUpTextView, thumbDownTextView, writeTextView;
+    Button readButton;
+    ListView reviewListView;
+
+    int likeCount = 15, hateCount = 1;
+    boolean thumbUpState = false, thumbDownState = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        thumb_up_txt = findViewById(R.id.thumb_up_text);
-        thumb_down_txt = findViewById(R.id.thumb_down_text);
+        thumbUpImageView = findViewById(R.id.thumbUpImageView); thumbDownImageView = findViewById(R.id.thumbDownImageView);
+        thumbUpTextView = findViewById(R.id.thumbUpTextView); thumbDownTextView = findViewById(R.id.thumbDownTextView); // 싫어요 버튼
 
-        thumb_up = findViewById(R.id.thumb_up); thumb_up_selected = findViewById(R.id.thumb_up_selected);
-        thumb_down = findViewById(R.id.thumb_down); thumb_down_selected = findViewById(R.id.thumb_down_selected);
+        //좋아요 버튼 클릭 시
+        thumbUpImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(thumbDownState){
+                    likeCount += 1; hateCount -= 1;
+                    thumbUpTextView.setText(String.valueOf(likeCount));
+                    thumbDownTextView.setText(String.valueOf(hateCount));
+                    thumbUpImageView.setImageResource(R.drawable.ic_thumb_up_selected);
+                    thumbDownImageView.setImageResource(R.drawable.ic_thumb_down);
+                } else {
+                    likeCount += 1;
+                    thumbUpTextView.setText(String.valueOf(likeCount));
+                    thumbUpImageView.setImageResource(R.drawable.ic_thumb_up_selected);
+                }
+                thumbUpState = true;
+            }
+        });
 
-        writeReview = findViewById(R.id.writeReview);
-        writeReview.setOnClickListener(new View.OnClickListener() {
+        //싫어요 버튼 클릭 시
+        thumbDownImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(thumbUpState) {
+                    hateCount += 1; likeCount -= 1;
+                    thumbUpTextView.setText(String.valueOf(likeCount));
+                    thumbDownTextView.setText(String.valueOf(hateCount));
+                    thumbDownImageView.setImageResource(R.drawable.ic_thumb_down_selected);
+                    thumbUpImageView.setImageResource(R.drawable.ic_thumb_up);
+                } else {
+                    hateCount += 1;
+                    thumbDownTextView.setText(String.valueOf(hateCount));
+                    thumbDownImageView.setImageResource(R.drawable.ic_thumb_down_selected);
+                }
+                thumbDownState = true;
+            }
+        });
+
+        writeTextView = findViewById(R.id.writeTextView); // 작성하기 Toast Message
+        writeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "'작성하기'를 클릭하셨습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        readReview = findViewById(R.id.readReview);
-        readReview.setOnClickListener(new View.OnClickListener() {
+        readButton = findViewById(R.id.readButton); // 모두보기 Toast Message
+        readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "'모두보기'를 클릭하셨습니다.", Toast.LENGTH_SHORT).show();
             }
         });
+
+        reviewListView = findViewById(R.id.reviewListView);
+
+        ListViewAdapter adapter = new ListViewAdapter(); // 리스트뷰 세팅
+        adapter.addItem(new ListViewItem("kym71**","적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."));
+        adapter.addItem(new ListViewItem("sozo3**","행복하게 봤네요. 간만에 흥미진진했습니다."));
+        reviewListView.setAdapter(adapter);
+    }
+
+    // 리뷰 리스트뷰 어댑터
+    class ListViewAdapter extends BaseAdapter{
+        ArrayList<ListViewItem> arrayList = new ArrayList<>();
+
+        @Override
+        public int getCount() {
+            return arrayList.size();
+        }
+
+        public void addItem(ListViewItem item){
+            arrayList.add(item);
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return arrayList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ListItemView view = new ListItemView(getApplicationContext());
+
+            ListViewItem item = arrayList.get(position);
+            view.setUser(item.getUserTextView());
+            view.setComment(item.getCommentTextView());
+
+            return view;
+        }
     }
 }
