@@ -36,18 +36,25 @@ public class MainActivity extends AppCompatActivity {
         thumbUpImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(thumbDownState){
+                if(thumbDownState){ // 싫어요 버튼이 눌려있을 시에는
                     likeCount += 1; hateCount -= 1;
+                    thumbDownState = false;
                     thumbUpTextView.setText(String.valueOf(likeCount));
                     thumbDownTextView.setText(String.valueOf(hateCount));
                     thumbUpImageView.setImageResource(R.drawable.ic_thumb_up_selected);
                     thumbDownImageView.setImageResource(R.drawable.ic_thumb_down);
-                } else {
-                    likeCount += 1;
-                    thumbUpTextView.setText(String.valueOf(likeCount));
-                    thumbUpImageView.setImageResource(R.drawable.ic_thumb_up_selected);
+                } else { // 싫어요 버튼이 안눌려있을 시에는
+                    if(thumbUpState){
+                        likeCount -= 1;
+                        thumbUpTextView.setText(String.valueOf(likeCount));
+                        thumbUpImageView.setImageResource(R.drawable.ic_thumb_up);
+                    } else{
+                        likeCount += 1;
+                        thumbUpTextView.setText(String.valueOf(likeCount));
+                        thumbUpImageView.setImageResource(R.drawable.ic_thumb_up_selected);
+                    }
                 }
-                thumbUpState = true;
+                thumbUpState = !thumbUpState;
             }
         });
 
@@ -55,18 +62,25 @@ public class MainActivity extends AppCompatActivity {
         thumbDownImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(thumbUpState) {
+                if(thumbUpState) { // 좋아요 버튼이 눌려있을 시에는
                     hateCount += 1; likeCount -= 1;
+                    thumbUpState = false;
                     thumbUpTextView.setText(String.valueOf(likeCount));
                     thumbDownTextView.setText(String.valueOf(hateCount));
                     thumbDownImageView.setImageResource(R.drawable.ic_thumb_down_selected);
                     thumbUpImageView.setImageResource(R.drawable.ic_thumb_up);
-                } else {
-                    hateCount += 1;
-                    thumbDownTextView.setText(String.valueOf(hateCount));
-                    thumbDownImageView.setImageResource(R.drawable.ic_thumb_down_selected);
+                } else { // 좋아요 버튼이 안눌려있을 시에는
+                    if(thumbDownState){
+                        hateCount -= 1;
+                        thumbDownTextView.setText(String.valueOf(hateCount));
+                        thumbDownImageView.setImageResource(R.drawable.ic_thumb_down);
+                    } else {
+                        hateCount += 1;
+                        thumbDownTextView.setText(String.valueOf(hateCount));
+                        thumbDownImageView.setImageResource(R.drawable.ic_thumb_down_selected);
+                    }
                 }
-                thumbDownState = true;
+                thumbDownState = !thumbDownState;
             }
         });
 
