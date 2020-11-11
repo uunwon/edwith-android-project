@@ -1,12 +1,15 @@
 package com.yunwoon.projectb;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView thumbUpTextView, thumbDownTextView, writeTextView;
     Button readButton;
     ListView reviewListView;
+    ScrollView scrollView;
 
     int likeCount = 15, hateCount = 1;
     boolean thumbUpState = false, thumbDownState = false;
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         thumbUpImageView = findViewById(R.id.thumbUpImageView); thumbDownImageView = findViewById(R.id.thumbDownImageView);
-        thumbUpTextView = findViewById(R.id.thumbUpTextView); thumbDownTextView = findViewById(R.id.thumbDownTextView); // 싫어요 버튼
+        thumbUpTextView = findViewById(R.id.thumbUpTextView); thumbDownTextView = findViewById(R.id.thumbDownTextView);
 
         //좋아요 버튼 클릭 시
         thumbUpImageView.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListViewAdapter adapter = new ListViewAdapter(); // 리스트뷰 세팅
         adapter.addItem(new ListViewItem("kym71**","적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."));
-        adapter.addItem(new ListViewItem("sozo3**","행복하게 봤네요. 간만에 흥미진진했습니다."));
+        adapter.addItem(new ListViewItem("sozo3**","적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."));
         reviewListView.setAdapter(adapter);
     }
 

@@ -18,6 +18,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_weight="6">
         <TextView
             android:id="@+id/userTextView"
@@ -37,10 +38,10 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="5"
             android:scaleX="0.5"
             android:scaleY="0.5"
-            android:rating="5"
-            android:max="5"
             android:transformPivotX="0dp"
             android:transformPivotY="0dp"
             android:layout_marginLeft="13dp"
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:text="적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/gray"
             android:layout_marginTop="10dp"
             android:layout_below="@id/timeTextView"/>

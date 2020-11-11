@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    android:id="@+id/scrollView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/relativeLayout1"
             android:layout_width="match_parent"
@@ -289,8 +290,7 @@
             <ListView
                 android:id="@+id/reviewListView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/readButton"
+                android:layout_height="270dp"
                 android:layout_below="@+id/movieCommentTextView"/>
             <Button
                 android:id="@+id/readButton"
@@ -302,7 +302,7 @@
                 android:textColor="#510266"
                 android:background="@drawable/btn_background"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/writeTextView"
+                android:layout_below="@id/reviewListView"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
 

@@ -13,15 +13,7 @@ public class ListViewItem {
         return userTextView;
     }
 
-    public void setUserTextView(String userTextView) {
-        this.userTextView = userTextView;
-    }
-
     public String getCommentTextView() {
         return commentTextView;
-    }
-
-    public void setCommentTextView(String commentTextView) {
-        this.commentTextView = commentTextView;
     }
 }
