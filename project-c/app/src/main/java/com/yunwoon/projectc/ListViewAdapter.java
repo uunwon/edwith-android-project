@@ -36,6 +36,7 @@ public class ListViewAdapter extends BaseAdapter {
         ListViewItem item = arrayList.get(position);
         view.setUser(item.getUserTextView());
         view.setComment(item.getCommentTextView());
+        view.setRatingBar(item.getRatingBar());
 
         return view;
     }
