@@ -9,23 +9,23 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-public class ListItemView extends LinearLayout {
+public class CommentView extends LinearLayout {
     TextView userTextView, commentTextView;
     RatingBar ratingBar;
 
-    public ListItemView(Context context) {
+    public CommentView(Context context) {
         super(context);
         init(context);
     }
 
-    public ListItemView(Context context, @Nullable AttributeSet attrs) {
+    public CommentView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     private void init(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.listitem, this, true);
+        inflater.inflate(R.layout.listitem, this, true); // XML 파일을 뷰로 생성해줌
 
         userTextView = findViewById(R.id.userTextView);
         commentTextView = findViewById(R.id.commentTextView);
