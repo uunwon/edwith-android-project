@@ -3,32 +3,32 @@ package com.yunwoon.projectc;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ListViewItem implements Parcelable {
+public class CommentItem implements Parcelable {
     private String userTextView;
     private String commentTextView;
     private float ratingBar;
 
-    public ListViewItem(String userTextView, String commentTextView, float ratingBar) {
+    public CommentItem(String userTextView, String commentTextView, float ratingBar) {
         this.userTextView = userTextView;
         this.commentTextView = commentTextView;
         this.ratingBar = ratingBar;
     }
 
-    protected ListViewItem(Parcel in) {
+    protected CommentItem(Parcel in) {
         userTextView = in.readString();
         commentTextView = in.readString();
         ratingBar = in.readFloat();
     }
 
-    public static final Creator<ListViewItem> CREATOR = new Creator<ListViewItem>() {
+    public static final Creator<CommentItem> CREATOR = new Creator<CommentItem>() {
         @Override
-        public ListViewItem createFromParcel(Parcel in) {
-            return new ListViewItem(in);
+        public CommentItem createFromParcel(Parcel in) {
+            return new CommentItem(in);
         }
 
         @Override
-        public ListViewItem[] newArray(int size) {
-            return new ListViewItem[size];
+        public CommentItem[] newArray(int size) {
+            return new CommentItem[size];
         }
     };
 

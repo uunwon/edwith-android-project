@@ -8,14 +8,17 @@ import java.util.ArrayList;
 
 // 리뷰 리스트뷰 어댑터
 public class ListViewAdapter extends BaseAdapter {
-    ArrayList<ListViewItem> arrayList = new ArrayList<>();
+    ArrayList<CommentItem> arrayList = new ArrayList<>();
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        if(arrayList != null)
+            return arrayList.size();
+        else
+            return 0;
     }
 
-    public void addItem(ListViewItem item){
+    public void addItem(CommentItem item){
         arrayList.add(item);
     }
 
@@ -31,9 +34,15 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ListItemView view = new ListItemView(parent.getContext());
+        CommentView view;
 
-        ListViewItem item = arrayList.get(position);
+        if(convertView==null){
+            view = new CommentView(parent.getContext());
+        }else{
+            view = (CommentView) convertView;
+        }
+
+        CommentItem item = arrayList.get(position);
         view.setUser(item.getUserTextView());
         view.setComment(item.getCommentTextView());
         view.setRatingBar(item.getRatingBar());
