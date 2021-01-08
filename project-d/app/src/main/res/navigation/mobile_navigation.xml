@@ -15,6 +15,7 @@
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
             app:destination="@id/nav_home_second" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_home_second"
         android:name="com.yunwoon.projectd.ui.home.HomeSecondFragment"
@@ -40,4 +41,5 @@
         android:name="com.yunwoon.projectd.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_book"
         tools:layout="@layout/fragment_slideshow" />
+
 </navigation>
