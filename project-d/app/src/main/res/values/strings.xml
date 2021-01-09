@@ -28,5 +28,6 @@
     <string name="menu02">설정</string>
     <string name="menu_setting">사용자 설정</string>
 
-    <string name="home_second">Home Second</string>
+    <string name="list_second">List Second</string>
+    <string name="review_second">Review Second</string>
 </resources>

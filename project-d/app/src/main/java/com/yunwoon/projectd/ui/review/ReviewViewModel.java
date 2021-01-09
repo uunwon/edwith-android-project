@@ -1,16 +1,16 @@
-package com.yunwoon.projectd.ui.home;
+package com.yunwoon.projectd.ui.review;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class ReviewViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public ReviewViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is review fragment");
     }
 
     public LiveData<String> getText() {

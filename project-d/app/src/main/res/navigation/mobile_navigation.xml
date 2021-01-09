@@ -3,26 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_list">
+    app:startDestination="@+id/nav_review">
 
     <fragment
         android:id="@+id/nav_list"
-        android:name="com.yunwoon.projectd.ui.home.HomeFragment"
+        android:name="com.yunwoon.projectd.ui.list.ListFragment"
         android:label="@string/menu_list"
-        tools:layout="@layout/fragment_home">
-
+        tools:layout="@layout/fragment_list">
         <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
+            android:id="@+id/action_ListFragment_to_ListSecondFragment"
+            app:destination="@id/nav_list_second" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.yunwoon.projectd.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
+        android:id="@+id/nav_list_second"
+        android:name="com.yunwoon.projectd.ui.list.ListSecondFragment"
+        android:label="@string/list_second"
+        tools:layout="@layout/fragment_list_second">
         <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            android:id="@+id/action_ListSecondFragment_to_ListFragment"
             app:destination="@id/nav_list" />
 
         <argument
@@ -32,9 +31,27 @@
 
     <fragment
         android:id="@+id/nav_review"
-        android:name="com.yunwoon.projectd.ui.gallery.GalleryFragment"
-        android:label="@string/menu_list"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="com.yunwoon.projectd.ui.review.ReviewFragment"
+        android:label="@string/menu_review"
+        tools:layout="@layout/fragment_review" >
+        <action
+            android:id="@+id/action_ReviewFragment_to_ReviewSecondFragment"
+            app:destination="@id/nav_review_second" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_review_second"
+        android:name="com.yunwoon.projectd.ui.list.ReviewSecondFragment"
+        android:label="@string/review_second"
+        tools:layout="@layout/fragment_review_second">
+        <action
+            android:id="@+id/action_ReviewSecondFragment_to_ReviewFragment"
+            app:destination="@id/nav_review" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_book"

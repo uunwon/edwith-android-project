@@ -1,4 +1,4 @@
-package com.yunwoon.projectd.ui.gallery;
+package com.yunwoon.projectd.ui.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.yunwoon.projectd.R;
 
-public class GalleryFragment extends Fragment {
+public class ListFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private ListViewModel listViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        listViewModel =
+                ViewModelProviders.of(this).get(ListViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_list, container, false);
+        final TextView textView = root.findViewById(R.id.text_list);
+        listViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
