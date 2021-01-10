@@ -29,4 +29,7 @@
     <string name="menu_setting">사용자 설정</string>
 
     <string name="list_second">List Second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
