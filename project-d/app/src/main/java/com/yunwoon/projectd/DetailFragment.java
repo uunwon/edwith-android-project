@@ -1,5 +1,6 @@
 package com.yunwoon.projectd;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +15,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DetailFragment extends Fragment {
+    private static final int REQUEST_CODE_WRITE = 101;
+    private static final int REQUEST_CODE_READ = 102;
 
     private ImageView thumbUpImageView, thumbDownImageView;
     private TextView thumbUpTextView, thumbDownTextView, writeTextView;
@@ -95,7 +99,8 @@ public class DetailFragment extends Fragment {
         writeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.showWriteReviewPage();
+                Intent intent = new Intent(getActivity(), WriteReviewActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_WRITE);
             }
         });
 
@@ -104,8 +109,10 @@ public class DetailFragment extends Fragment {
         readButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ReadReviewActivity.class);
                 listViewItemArrayList = adapter.arrayList;
-                activity.showReadReviewPage(listViewItemArrayList);
+                intent.putParcelableArrayListExtra("review", listViewItemArrayList); // 리스트뷰 내 내용 전달
+                startActivityForResult(intent, REQUEST_CODE_READ);
             }
         });
 
@@ -147,20 +154,28 @@ public class DetailFragment extends Fragment {
         thumbDownImageView.setImageResource(R.drawable.ic_thumb_down);
     }
 
-    // 작성하기에서 한줄평 페이지 데이터 리스트뷰에 셋업
-    public void setDetailPage01(Intent data) {
-        user = data.getStringExtra("user");
-        review = data.getStringExtra("review");
-        rate = data.getFloatExtra("rate", (float) 3.5);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        adapter.addItem(new CommentItem(user, review, rate));
-        reviewListView.setAdapter(adapter);
-    }
+        if(requestCode == REQUEST_CODE_WRITE){
+            if(resultCode == Activity.RESULT_OK){
+                user = data.getStringExtra("user");
+                review = data.getStringExtra("review");
+                rate = data.getFloatExtra("rate", (float) 3.5);
 
-    // 모두보기에서 한줄평 페이지 데이터 리스트뷰에 셋업
-    public void setDetailPage02(Intent data) {
-        listViewItemArrayList = data.getParcelableArrayListExtra("review2");
-        adapter.arrayList = listViewItemArrayList;
-        reviewListView.setAdapter(adapter);
+                adapter.addItem(new CommentItem(user, review, rate));
+                reviewListView.setAdapter(adapter);
+            }
+        }
+
+        // 모두보기에서 한줄평 페이지 데이터 리스트뷰에 셋업
+        if (requestCode == REQUEST_CODE_READ) {
+            if (resultCode == Activity.RESULT_OK) {
+                listViewItemArrayList = data.getParcelableArrayListExtra("review2");
+                adapter.arrayList = listViewItemArrayList;
+                reviewListView.setAdapter(adapter);
+            }
+        }
     }
 }
