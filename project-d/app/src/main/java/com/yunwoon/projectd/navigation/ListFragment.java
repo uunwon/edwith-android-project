@@ -6,10 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.yunwoon.projectd.MainActivity;
@@ -18,8 +15,6 @@ import com.yunwoon.projectd.ViewPagerAdapter;
 import com.yunwoon.projectd.viewpager.FirstmvFragment;
 import com.yunwoon.projectd.viewpager.SecondmvFragment;
 import com.yunwoon.projectd.viewpager.ThirdmvFragment;
-
-import java.util.ArrayList;
 
 public class ListFragment extends Fragment {
     MainActivity activity;
@@ -30,7 +25,7 @@ public class ListFragment extends Fragment {
         activity = (MainActivity) getActivity();
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
+    public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_list, container, false);
 
