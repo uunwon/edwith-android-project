@@ -1,5 +1,6 @@
 package com.yunwoon.projectd.navigation;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.yunwoon.projectd.MainActivity;
 import com.yunwoon.projectd.R;
+import com.yunwoon.projectd.ViewPagerAdapter;
 import com.yunwoon.projectd.viewpager.FirstmvFragment;
 import com.yunwoon.projectd.viewpager.SecondmvFragment;
 import com.yunwoon.projectd.viewpager.ThirdmvFragment;
@@ -19,6 +22,13 @@ import com.yunwoon.projectd.viewpager.ThirdmvFragment;
 import java.util.ArrayList;
 
 public class ListFragment extends Fragment {
+    MainActivity activity;
+
+    @Override
+    public void onAttach(Context context) { // 프래그먼트가 올라오는 순간
+        super.onAttach(context);
+        activity = (MainActivity) getActivity();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +37,7 @@ public class ListFragment extends Fragment {
         ViewPager pager = rootView.findViewById(R.id.viewPager);
         pager.setOffscreenPageLimit(3); // 담을 프래그먼트 갯수 설정
 
-        MoviePagerAdapter adapter = new MoviePagerAdapter(getFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
 
         FirstmvFragment firstmvFragment = new FirstmvFragment();
         adapter.addItem(firstmvFragment);
@@ -39,27 +49,5 @@ public class ListFragment extends Fragment {
         pager.setAdapter(adapter);
 
         return rootView;
-    }
-
-    class MoviePagerAdapter extends FragmentStatePagerAdapter {
-        ArrayList<Fragment> items = new ArrayList<>();
-
-        public MoviePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        public void addItem(Fragment item) {
-            items.add(item);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return items.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return items.size();
-        }
     }
 }

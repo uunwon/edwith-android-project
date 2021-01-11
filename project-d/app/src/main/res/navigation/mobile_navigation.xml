@@ -9,7 +9,17 @@
         android:id="@+id/nav_list"
         android:name="com.yunwoon.projectd.navigation.ListFragment"
         android:label="@string/menu_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_nav_list_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.yunwoon.projectd.DetailFragment"
+        android:label="@string/menu_detail"
+        tools:layout="@layout/fragment_detail" />
 
     <fragment
         android:id="@+id/nav_review"
