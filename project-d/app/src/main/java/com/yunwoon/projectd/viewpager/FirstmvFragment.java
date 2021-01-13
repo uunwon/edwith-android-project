@@ -23,6 +23,7 @@ public class FirstmvFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //내비게이션 컨트롤러를 이용해 상세 화면 전환
                 Navigation.findNavController(view).navigate(R.id.action_nav_list_to_nav_detail);
             }
         });

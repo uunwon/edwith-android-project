@@ -116,6 +116,7 @@ public class DetailFragment extends Fragment {
             }
         });
 
+        //리뷰 아이템 추가
         adapter.addItem(new CommentItem("kym71**", "적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요.", 4.5f));
         adapter.addItem(new CommentItem("angel**", "웃긴 내용보다는 좀 더 진지한 영화.", 4.0f));
         adapter.addItem(new CommentItem("beaut**", "연기가 부족한 느낌이 드는 배우도 있다. 그래도 전체적으로는 재밌다.", 5.0f));
@@ -158,6 +159,7 @@ public class DetailFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // 작성하기에서 한줄평 페이지 데이터 리스트뷰에 셋업
         if(requestCode == REQUEST_CODE_WRITE){
             if(resultCode == Activity.RESULT_OK){
                 user = data.getStringExtra("user");
