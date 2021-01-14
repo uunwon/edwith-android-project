@@ -12,12 +12,12 @@ import android.widget.Button;
 
 import com.yunwoon.projectd.R;
 
-public class FirstmvFragment extends Fragment {
+public class MovieFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_firstmv, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_movie, container, false);
 
         Button button = rootView.findViewById(R.id.detailButton);
         button.setOnClickListener(new View.OnClickListener() {

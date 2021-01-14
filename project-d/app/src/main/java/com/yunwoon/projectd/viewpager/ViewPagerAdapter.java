@@ -1,4 +1,4 @@
-package com.yunwoon.projectd;
+package com.yunwoon.projectd.viewpager;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+// 영화 뷰페이저 어댑터
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<Fragment> items = new ArrayList<>();
 

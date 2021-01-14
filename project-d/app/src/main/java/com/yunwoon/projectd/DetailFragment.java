@@ -35,19 +35,9 @@ public class DetailFragment extends Fragment {
     private int thumbUpCount = 15, thumbDownCount = 1;
     private boolean thumbUpState = false, thumbDownState = false;
 
-    MainActivity activity;
-    Context context;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        activity = (MainActivity) getActivity();
-    }
-
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_detail, container, false);
-        context = container.getContext();
 
         thumbUpImageView = root.findViewById(R.id.thumbUpImageView);
         thumbDownImageView = root.findViewById(R.id.thumbDownImageView);

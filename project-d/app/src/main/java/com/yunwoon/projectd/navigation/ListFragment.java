@@ -11,10 +11,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.yunwoon.projectd.MainActivity;
 import com.yunwoon.projectd.R;
-import com.yunwoon.projectd.ViewPagerAdapter;
-import com.yunwoon.projectd.viewpager.FirstmvFragment;
-import com.yunwoon.projectd.viewpager.SecondmvFragment;
-import com.yunwoon.projectd.viewpager.ThirdmvFragment;
+import com.yunwoon.projectd.viewpager.MovieFragment;
+import com.yunwoon.projectd.viewpager.ViewPagerAdapter;
 
 public class ListFragment extends Fragment {
     MainActivity activity;
@@ -34,15 +32,10 @@ public class ListFragment extends Fragment {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
 
-        FirstmvFragment firstmvFragment = new FirstmvFragment();
-        adapter.addItem(firstmvFragment);
-        SecondmvFragment secondmvFragment = new SecondmvFragment();
-        adapter.addItem(secondmvFragment);
-        ThirdmvFragment thirdmvFragment = new ThirdmvFragment();
-        adapter.addItem(thirdmvFragment);
+        MovieFragment movieFragment = new MovieFragment(); // 하나의 프래그먼트에서 데이터 변경되는 방식
+        adapter.addItem(movieFragment);
 
         pager.setAdapter(adapter);
-
         return rootView;
     }
 }
