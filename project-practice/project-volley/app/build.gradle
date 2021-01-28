@@ -34,4 +34,5 @@ dependencies {
 
     // 외부 라이브러리 Volley
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
 }
