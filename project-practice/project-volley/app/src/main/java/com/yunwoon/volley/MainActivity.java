@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +22,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView);
+        imageView = findViewById(R.id.imageView);
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -38,9 +41,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendImageRequest();
+            }
+        });
+
         if(AppHelper.requestQueue == null) {
             AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
+    }
+
+    public void sendImageRequest(){
+        // 이미지 다운로드 받아 이미지 뷰에 표시하기 위한 함수
+        String url = "https://movie-phinf.pstatic.net/20151026_168/1445839464851D8nKE_JPEG/movie_image.jpg?type=m665_443_2";
+        ImageLoadTask task = new ImageLoadTask(url, imageView);
+        task.execute();
     }
 
     public void sendRequest() {
