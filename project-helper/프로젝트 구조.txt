@@ -1,0 +1,20 @@
+
+
+기반이 되는 레이아웃
+listitem.xml
+fragment_viewpager.xml
+
+리스트뷰 아이템 VO (Parcelable)
+CommentItem.java
+ViewPagerItem.java
+
+리스트뷰 어댑터
+ListViewAdapter.java
+ViewPagerAdapter.java
+
+레이아웃 파일을 뷰로 생성해줌
+CommentView.java
+
+실제 보이는 화면
+DetailFragment.java 에서 adapter.addItem 을 통해 리뷰 아이템 추가함
+fragment_list -> ListFragment.java 여기에서 adapter.addItem 으로 프래그먼트의 내용들을 추가하기!!!!
