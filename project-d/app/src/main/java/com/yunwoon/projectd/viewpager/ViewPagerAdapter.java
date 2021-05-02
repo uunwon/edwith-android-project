@@ -1,30 +1,86 @@
 package com.yunwoon.projectd.viewpager;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.yunwoon.projectd.CommentItem;
+import com.yunwoon.projectd.R;
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 // 영화 뷰페이저 어댑터
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-    ArrayList<Fragment> items = new ArrayList<>();
+public class ViewPagerAdapter extends PagerAdapter {
+    ArrayList<ViewPagerItem> movies = new ArrayList<>();
+    private Context mContext = null;
 
-    public ViewPagerAdapter(FragmentManager fm) {
-        super(fm);
+    public ViewPagerAdapter() { }
+
+    public ViewPagerAdapter(Context context) {
+        this.mContext = context;
     }
 
-    public void addItem(Fragment item) {
-        items.add(item);
+    public void addItem(ViewPagerItem item){
+        movies.add(item);
     }
 
     @Override
-    public Fragment getItem(int position) {
-        return items.get(position);
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        View view = null;
+        ViewPagerItem item = movies.get(position);
+
+        mContext = container.getContext();
+
+        if(mContext != null) {
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.fragment_viewpager, container, false);
+
+            ImageView movieImageView = view.findViewById(R.id.movieImageView); // 영화 이미지
+            movieImageView.setImageResource(item.getMovieImageView());
+
+            TextView orderTextView = view.findViewById(R.id.orderTextView); // 순위
+            orderTextView.setText(item.getOrderTextView());
+
+            TextView movieNameTextView = view.findViewById(R.id.movieNameTextView); // 영화 제목
+            movieNameTextView.setText(item.getMovieNameTextView());
+
+            TextView rateTextView = view.findViewById(R.id.rateTextView); // 영화 예매율
+            rateTextView.setText(item.getRateTextView());
+
+            TextView ageTextView = view.findViewById(R.id.ageTextView); // 관람 등급
+            ageTextView.setText(item.getAgeTextView());
+        }
+
+        container.addView(view);
+        return view;
     }
 
     @Override
     public int getCount() {
-        return items.size();
+        if(movies != null)
+            return movies.size();
+        else
+            return 0;
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        container.removeView((View)object); // 뷰 페이저에서 삭제
+    }
+
+    // 페이지뷰가 키 객체와 연관되는지 확인
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return (view == object);
     }
 }

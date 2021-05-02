@@ -13,6 +13,9 @@ import com.yunwoon.projectd.MainActivity;
 import com.yunwoon.projectd.R;
 import com.yunwoon.projectd.viewpager.MovieFragment;
 import com.yunwoon.projectd.viewpager.ViewPagerAdapter;
+import com.yunwoon.projectd.viewpager.ViewPagerItem;
+
+import java.util.ArrayList;
 
 public class ListFragment extends Fragment {
     MainActivity activity;
@@ -30,12 +33,12 @@ public class ListFragment extends Fragment {
         ViewPager pager = rootView.findViewById(R.id.viewPager);
         pager.setOffscreenPageLimit(3); // 담을 프래그먼트 갯수 설정
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-
-        MovieFragment movieFragment = new MovieFragment(); // 하나의 프래그먼트에서 데이터 변경되는 방식
-        adapter.addItem(movieFragment);
-
+        ViewPagerAdapter adapter = new ViewPagerAdapter();
+        adapter.addItem(new ViewPagerItem(R.drawable.image1,"1","군 도", "61.6", "15"));
+        adapter.addItem(new ViewPagerItem(R.drawable.image2,"2","공 조", "15.5", "15"));
+        adapter.addItem(new ViewPagerItem(R.drawable.image3,"3","더 킹", "11.2", "12"));
         pager.setAdapter(adapter);
+
         return rootView;
     }
 }

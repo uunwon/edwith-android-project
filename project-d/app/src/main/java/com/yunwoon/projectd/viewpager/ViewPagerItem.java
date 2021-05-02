@@ -5,12 +5,12 @@ import android.os.Parcelable;
 
 public class ViewPagerItem implements Parcelable {
     private int movieImageView;
-    private int orderTextView; // 순서
+    private String orderTextView; // 순서
     private String movieNameTextView; // 영화 제목
-    private float rateTextView; // 예매율
-    private int ageTextView; // 관람 등급
+    private String rateTextView; // 예매율
+    private String ageTextView; // 관람 등급
 
-    public ViewPagerItem(int movieImageView, int orderTextView, String movieNameTextView, float rateTextView, int ageTextView) {
+    public ViewPagerItem(int movieImageView, String orderTextView, String movieNameTextView, String rateTextView, String ageTextView) {
         this.movieImageView = movieImageView;
         this.orderTextView = orderTextView;
         this.movieNameTextView = movieNameTextView;
@@ -20,10 +20,10 @@ public class ViewPagerItem implements Parcelable {
 
     protected ViewPagerItem(Parcel in) {
         movieImageView = in.readInt();
-        orderTextView = in.readInt();
+        orderTextView = in.readString();
         movieNameTextView = in.readString();
-        rateTextView = in.readFloat();
-        ageTextView = in.readInt();
+        rateTextView = in.readString();
+        ageTextView = in.readString();
     }
 
     public static final Creator<ViewPagerItem> CREATOR = new Creator<ViewPagerItem>() {
@@ -42,7 +42,7 @@ public class ViewPagerItem implements Parcelable {
         return movieImageView;
     }
 
-    public int getOrderTextView() {
+    public String getOrderTextView() {
         return orderTextView;
     }
 
@@ -50,11 +50,11 @@ public class ViewPagerItem implements Parcelable {
         return movieNameTextView;
     }
 
-    public float getRateTextView() {
+    public String getRateTextView() {
         return rateTextView;
     }
 
-    public int getAgeTextView() {
+    public String getAgeTextView() {
         return ageTextView;
     }
 
@@ -66,9 +66,9 @@ public class ViewPagerItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(movieImageView);
-        parcel.writeInt(orderTextView);
+        parcel.writeString(orderTextView);
         parcel.writeString(movieNameTextView);
-        parcel.writeFloat(rateTextView);
-        parcel.writeInt(ageTextView);
+        parcel.writeString(rateTextView);
+        parcel.writeString(ageTextView);
     }
 }

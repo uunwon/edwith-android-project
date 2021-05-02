@@ -17,7 +17,7 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_movie, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_viewpager, container, false);
 
         Button button = rootView.findViewById(R.id.detailButton);
         button.setOnClickListener(new View.OnClickListener() {
