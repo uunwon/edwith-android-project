@@ -39,7 +39,6 @@ public class ListFragment extends Fragment {
         adapter.addItem(new ViewPagerItem(R.drawable.image1,"1","군 도", "61.6", "15"));
         adapter.addItem(new ViewPagerItem(R.drawable.image2,"2","공 조", "15.5", "15"));
         adapter.addItem(new ViewPagerItem(R.drawable.image3,"3","더 킹", "11.2", "12"));
-        adapter.addItem(new ViewPagerItem(R.drawable.image3,"4","플 립", "4.8", "12"));
         pager.setAdapter(adapter);
 
         return rootView;
