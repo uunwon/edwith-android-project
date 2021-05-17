@@ -5,19 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.yunwoon.projectd.MainActivity;
 import com.yunwoon.projectd.R;
-import com.yunwoon.projectd.viewpager.MovieFragment;
 import com.yunwoon.projectd.viewpager.ViewPagerAdapter;
 import com.yunwoon.projectd.viewpager.ViewPagerItem;
-
-import java.util.ArrayList;
 
 public class ListFragment extends Fragment {
     MainActivity activity;

@@ -3,6 +3,7 @@ package com.yunwoon.projectd;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -35,15 +36,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        Button button = findViewById(R.id.detailButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //내비게이션 컨트롤러를 이용해 상세 화면 전환
-                Navigation.findNavController(view).navigate(R.id.action_nav_list_to_nav_detail);
-            }
-        });
 
     }
 

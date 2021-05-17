@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yunwoon.projectd.CommentItem;
 import com.yunwoon.projectd.R;
@@ -17,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.PagerAdapter;
 
 // 영화 뷰페이저 어댑터
@@ -59,6 +62,15 @@ public class ViewPagerAdapter extends PagerAdapter {
 
             TextView ageTextView = view.findViewById(R.id.ageTextView); // 관람 등급
             ageTextView.setText(item.getAgeTextView());
+
+            Button detailButton = view.findViewById(R.id.detailButton);
+            detailButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // 내비게이션 컨트롤러를 이용해 상세 화면 전환
+                    Navigation.findNavController(view).navigate(R.id.action_nav_list_to_nav_detail);
+                }
+            });
         }
 
         container.addView(view);
